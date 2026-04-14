@@ -1,15 +1,16 @@
 # SPDX-FileCopyrightText: 2024 Ledger SAS
+# SPDX-FileCopyrightText: 2026 H2Lab
 #
 # SPDX-License-Identifier: Apache-2.0
 
 name: python unit testing
 
 on:
-    workflow_call:
-      inputs:
-        python-version:
-          required: true
-          type: string
+  workflow_call:
+    inputs:
+      python-version:
+        required: true
+        type: string
 
 defaults:
   run:
@@ -25,23 +26,23 @@ jobs:
           - windows-latest
     runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-    - uses: actions/setup-python@v5
-      with:
-        python-version: ${{ inputs.python-version }}
-        cache: 'pip'
-    - run: |
-        pip install tox
-    - name: execute unit-test
-      run: |
-        tox -e unittests
-    - name: Upload coverage reports to Codecov, on ubuntu only
-      if: ${{ matrix.os == 'ubuntu-latest' }}
-      uses: codecov/codecov-action@v4
-      with:
-        working-directory: ${{github.workspace}}
-        token: ${{ secrets.CODECOV_TOKEN }}
-        file: ${{github.workspace}}/coverage.xml
-        verbose: true
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ inputs.python-version }}
+          cache: 'pip'
+      - run: |
+          pip install tox
+      - name: execute unit-test
+        run: |
+          tox -e unittests
+      - name: Upload coverage reports to Codecov, on ubuntu only
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        uses: codecov/codecov-action@v6
+        with:
+          working-directory: ${{github.workspace}}
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ${{github.workspace}}/coverage.xml
+          verbose: true

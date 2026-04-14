@@ -1,15 +1,16 @@
 # SPDX-FileCopyrightText: 2024 Ledger SAS
+# SPDX-FileCopyrightText: 2026 H2Lab
 #
 # SPDX-License-Identifier: Apache-2.0
 
 name: python doc generation
 
 on:
-    workflow_call:
-      inputs:
-        python-version:
-          required: true
-          type: string
+  workflow_call:
+    inputs:
+      python-version:
+        required: true
+        type: string
 
 defaults:
   run:
@@ -19,15 +20,15 @@ jobs:
   docs:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-    - uses: actions/setup-python@v5
-      with:
-        python-version: ${{ inputs.python-version }}
-        cache: 'pip'
-    - run: |
-        pip install tox
-    - name: Doc
-      run: |
-        tox -e docs
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ inputs.python-version }}
+          cache: 'pip'
+      - run: |
+          pip install tox
+      - name: Doc
+        run: |
+          tox -e docs
