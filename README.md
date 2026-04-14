@@ -1,18 +1,17 @@
 <!--
 SPDX-FileCopyrightText: 2024 Ledger SAS
+SPDX-FileCopyrightText: 2026 H2Lab
 
 SPDX-License-Identifier: Apache-2.0
 -->
 
-# Outpost-OS reusable workflows for Python packages
-
-[![REUSE status](https://api.reuse.software/badge/github.com/outpost-os/pipeline-python)](https://api.reuse.software/info/github.com/outpost-os/pipeline-python)
+# Camelot-OS reusable workflows for Python packages
 
 ## Introduction
 
 This repository hold the python-related reusable workflows in order to limit redundancy between each python package CI/CD usage.
 
-This repository also impose some restrictions on python packages quality and tooling for Outpost, such as:
+This repository also impose some restrictions on python packages quality and tooling for Camelot-OS, such as:
 
    - using ToX for manipulating python venv and proper targets
    - having the following tox targets:
@@ -39,7 +38,7 @@ define the python release to execute the workflow on.
 A typical usage is the following:
 
 ```
-uses: outpost-os/pipeline-python/.github/workflows/lint.yml@v1
+uses: camelot-os/pipeline-python/.github/workflows/lint.yml@v1
     with:
       python-version: '3.12'
 ```
