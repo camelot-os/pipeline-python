@@ -11,7 +11,7 @@ SPDX-License-Identifier: Apache-2.0
 
 This repository hold the python-related reusable workflows in order to limit redundancy between each python package CI/CD usage.
 
-This repository also impose some restrictions on python packages quality and tooling for Camelot-OS, such as:
+This repository also imposes some restrictions on python packages quality and tooling for Camelot-OS, such as:
 
    - using ToX for manipulating python venv and proper targets
    - having the following tox targets:
@@ -39,6 +39,6 @@ A typical usage is the following:
 
 ```
 uses: camelot-os/pipeline-python/.github/workflows/lint.yml@v1
-    with:
-      python-version: '3.12'
+with:
+    python-version: '3.12'
 ```

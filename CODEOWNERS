@@ -3,5 +3,5 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-# only CI team members are allowed to acknowledge PR
+# only OSS team members are allowed to acknowledge PR
 *       @camelot-os/camelot-oss-team
